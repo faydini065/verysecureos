@@ -1,4 +1,4 @@
-# Very Secure and Stable, Minimal Operating System
+# Very Secure and Stable, Minimal(0 byte) Operating System
 This system is a highly secure and stable piece of software, formally verified by the Isabelle/HOL mathematical proof engine—the same tool used to verify the seL4 microkernel. By achieving mathematical proof of correctness, it provides the highest level of security assurance available in computer science. Unlike traditional hardened operating systems such as GrapheneOS, which rely on mitigation strategies, this verified system mathematically guarantees the absence of entire classes of software bugs at its core.
 
 ### Overwiew

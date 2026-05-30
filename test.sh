@@ -1,17 +1,14 @@
 #!/usr/bin/env sh
 set -e
 
-echo "=== POSIX Isabelle Verification Script Started ==="
+echo "=== Very Secure OS verification script ==="
 
-# 1. Environment & Path Resolution
-# Explicitly uses the user's home directory to clone and manage the workspace
 HOME_DIR="/home/siyanware"
 REPO_DIR="${HOME_DIR}/verysecureos"
 VERIFY_DIR="${REPO_DIR}/formalverificationtest"
 CORE_BIN="${REPO_DIR}/src/core.bin"
 ISABELLE_BIN="${VERIFY_DIR}/Isabelle2024/bin/isabelle"
 
-# 2. Repository Verification and Cloning
 if [ ! -d "$REPO_DIR" ]; then
     echo "-> Repository not found. Cloning into $REPO_DIR..."
     cd "$HOME_DIR"
@@ -22,7 +19,6 @@ else
     git pull origin main >/dev/null 2>&1 || true
 fi
 
-# 3. Workspace Validation & MD5 Integrity Check
 if [ ! -f "$CORE_BIN" ]; then
     echo "-> src/core.bin not found. Creating a baseline empty file..."
     mkdir -p "${REPO_DIR}/src"
@@ -34,17 +30,15 @@ if [ "$CURRENT_MD5" != "d41d8cd98f00b204e9800998ecf8427e" ]; then
     echo "-> ERROR: Integrity check failed. src/core.bin is modified or not empty."
     exit 1
 fi
-echo "-> VERIFICATION SUCCESSFUL: src/core.bin integrity verified."
+echo "-> Integrity check succeed. src/core.bin file is secure."
 
-# 4. Dynamic Theory Patching
 if [ -f "${VERIFY_DIR}/Verification.thy" ]; then
     sed -i "s|val file_path = \".*\";|val file_path = \"${CORE_BIN}\";|g" "${VERIFY_DIR}/Verification.thy"
 else
-    echo "-> ERROR: Verification.thy target not found."
+    echo "-> Verification.thy target not found."
     exit 1
 fi
 
-# 5. Isabelle Toolchain Lifecycle Management
 if [ ! -f "$ISABELLE_BIN" ]; then
     echo "-> Toolchain not found. Provisioning Isabelle2024 locally..."
     
@@ -61,7 +55,6 @@ if [ ! -f "$ISABELLE_BIN" ]; then
     rm -f "/tmp/Isabelle2024_linux.tar.gz"
 fi
 
-# 6. Execution of Formal Verification Session
 echo "-> Executing formal mathematical verification layer..."
 cd "$VERIFY_DIR"
 "$ISABELLE_BIN" build -D .

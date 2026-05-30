@@ -1,0 +1,3 @@
+session "Verification" = Main +
+  theories
+    Verification

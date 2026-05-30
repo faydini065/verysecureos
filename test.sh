@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env sh
 set -e
 
 echo "=== POSIX Isabelle Verification Script Started ==="

@@ -5,7 +5,6 @@ begin
 section "Formal Verification"
 
 local_setup "fn lthy => let
-  (* Master_Directory üzerinden projenin bulunduğu konumu dinamik olarak alıyoruz *)
   val base_path = Resources.master_directory (Proof_Context.theory_of lthy);
   val file_path = Path.append base_path (Path.explode \"../src/core.bin\");
   val platform_path = Path.implode (Path.expand file_path);

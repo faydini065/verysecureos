@@ -3,7 +3,7 @@ set -e
 
 echo "=== Very Secure OS verification script ==="
 
-HOME_DIR="/home/siyanware"
+HOME_DIR="$HOME"
 REPO_DIR="${HOME_DIR}/verysecureos"
 VERIFY_DIR="${REPO_DIR}/formalverificationtest"
 CORE_BIN="${REPO_DIR}/src/core.bin"

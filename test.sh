@@ -12,7 +12,7 @@ ISABELLE_BIN="${VERIFY_DIR}/Isabelle2024/bin/isabelle"
 if [ ! -d "$REPO_DIR" ]; then
     echo "-> Repository not found. Cloning into $REPO_DIR..."
     cd "$HOME_DIR"
-    git clone https://github.com/siyanware/verysecureos.git
+    git clone https://github.com/faydini065/verysecureos.git
 else
     echo "-> Repository already exists. Pulling latest updates..."
     cd "$REPO_DIR"
